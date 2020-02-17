@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jkcj.dao.AD_DataDOMapper">
+  <resultMap id="BaseResultMap" type="com.jkcj.DO.AD_DataDO">
+    <result column="AD_Channel" jdbcType="INTEGER" property="adChannel" />
+    <result column="Data" jdbcType="VARCHAR" property="data" />
+    <result column="Time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <insert id="insert" parameterType="com.jkcj.DO.AD_DataDO">
+    insert into ad_data (AD_Channel, Data, Time
+      )
+    values (#{adChannel,jdbcType=INTEGER}, #{data,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jkcj.DO.AD_DataDO">
+    insert into ad_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adChannel != null">
+        AD_Channel,
+      </if>
+      <if test="data != null">
+        Data,
+      </if>
+      <if test="time != null">
+        Time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adChannel != null">
+        #{adChannel,jdbcType=INTEGER},
+      </if>
+      <if test="data != null">
+        #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>
