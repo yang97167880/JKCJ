@@ -7,10 +7,11 @@
     <result column="password" jdbcType="CHAR" property="password" />
     <result column="role_id" jdbcType="INTEGER" property="roleId" />
     <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="created_at" jdbcType="INTEGER" property="createdAt" />
+    <result column="created_at" jdbcType="DATE" property="createdAt" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
   </resultMap>
   <sql id="Base_Column_List">
-    uid, username, password, role_id, status, created_at
+    uid, username, password, role_id, status, created_at,tel
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -18,10 +19,23 @@
     from user
     where uid = #{uid,jdbcType=INTEGER}
   </select>
+  <select id="userLogin" parameterType="java.lang.String" resultType="com.jkcj.DO.UserDO">
+    select * from user where username = #{username,jdbcType=CHAR}
+  </select>
+  <insert id="userAdd" >
+    insert into user(username, password, role_id, tel)
+    values (#{username,jdbcType=CHAR}, #{password,jdbcType=CHAR}, 1, #{tel,jdbcType=VARCHAR})
+  </insert>
   <select id="getUserInfo" parameterType="java.lang.Integer" resultType="com.jkcj.VO.UserVO">
-    select  uid, username, role_id, status, created_at
-    from user
-    where uid = #{uid,jdbcType=INTEGER}
+    select  u.uid, u.username, r.title, u.status, u.created_at,u.tel
+    from user u inner join role r
+    on u.role_id = r.role_id
+    where u.uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <select id="getUserList" resultType="com.jkcj.VO.UserVO">
+    select  u.uid, u.username, r.title, u.status, u.created_at,u.tel
+    from user u inner join role r
+    on u.role_id = r.role_id
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user

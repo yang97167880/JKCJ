@@ -1,5 +1,7 @@
 package com.jkcj.DO;
 
+import java.util.Date;
+
 public class UserDO {
     private Integer uid;
 
@@ -11,7 +13,9 @@ public class UserDO {
 
     private Integer status;
 
-    private Integer createdAt;
+    private Date createdAt;
+
+    private String tel;
 
     public Integer getUid() {
         return uid;
@@ -53,11 +57,15 @@ public class UserDO {
         this.status = status;
     }
 
-    public Integer getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Integer createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
+
+    public String getTel() { return tel; }
+
+    public void setTel(String tel) { this.tel = tel; }
 }

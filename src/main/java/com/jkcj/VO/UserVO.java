@@ -1,5 +1,7 @@
 package com.jkcj.VO;
 
+import java.util.Date;
+
 /**
  * @Auther:Xhy
  * @Date:2020/2/17 20:21
@@ -11,11 +13,13 @@ public class UserVO {
 
     private String username;
 
-    private Integer roleId;
+    private String title;
 
     private Integer status;
 
-    private Integer createdAt;
+    private Date createdAt;
+
+    private String tel;
 
     public Integer getUid() {
         return uid;
@@ -33,13 +37,9 @@ public class UserVO {
         this.username = username;
     }
 
-    public Integer getRoleId() {
-        return roleId;
-    }
+    public String getTitle() { return title; }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
+    public void setTitle(String title) { this.title = title; }
 
     public Integer getStatus() {
         return status;
@@ -49,12 +49,16 @@ public class UserVO {
         this.status = status;
     }
 
-    public Integer getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Integer createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
+
+    public String getTel() { return tel; }
+
+    public void setTel(String tel) { this.tel = tel; }
 
 }

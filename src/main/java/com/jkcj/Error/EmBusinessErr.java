@@ -16,10 +16,10 @@ public enum EmBusinessErr implements CommonError {
     //用户相关错误
     USER_LOGIN_ERROR(2001, "登录失败"),
     USER_NOT_EXISTS(2002, "用户不存在"),
-    USER_PSD_MODIFY_ERROR(2003, "用户密码修改失败"),
-    USER_FOCUS_ENTER_ERROR(2004, "用户关注问题类型录入失败"),
-    USER_FOCUS_GET_ERROR(2005, "获取用户关注问题类型成功"),
-    USER_LIST_GET_ERROR(2005, "用户列表获取失败");
+    USER_PSD_ERROR(2003, "用户密码错误"),
+    USER_PSD_MODIFY_ERROR(2004, "用户密码修改失败"),
+    USER_LIST_GET_ERROR(2005, "用户列表获取失败"),
+    ROLE_LIST_GET_ERROR(2006, "角色列表获取失败");
 
     private int errCode;
     private String msg;

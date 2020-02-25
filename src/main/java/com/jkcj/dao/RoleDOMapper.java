@@ -2,6 +2,8 @@ package com.jkcj.dao;
 
 import com.jkcj.DO.RoleDO;
 
+import java.util.List;
+
 public interface RoleDOMapper {
     int deleteByPrimaryKey(Integer roleId);
 
@@ -14,4 +16,6 @@ public interface RoleDOMapper {
     int updateByPrimaryKeySelective(RoleDO record);
 
     int updateByPrimaryKey(RoleDO record);
+
+    List<RoleDO> getRoleList();
 }
