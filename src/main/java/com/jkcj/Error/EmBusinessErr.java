@@ -19,7 +19,10 @@ public enum EmBusinessErr implements CommonError {
     USER_PSD_ERROR(2003, "用户密码错误"),
     USER_PSD_MODIFY_ERROR(2004, "用户密码修改失败"),
     USER_LIST_GET_ERROR(2005, "用户列表获取失败"),
+    USER_DELETE_ERROR(2006, "用户删除失败"),
+    ROLE_DELETE_ERROR(2006, "角色删除失败"),
     ROLE_LIST_GET_ERROR(2006, "角色列表获取失败");
+
 
     private int errCode;
     private String msg;

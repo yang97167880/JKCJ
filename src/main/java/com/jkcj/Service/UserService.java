@@ -10,7 +10,7 @@ import java.util.Map;
 @Service
 public interface UserService {
 
-    UserVO getUserInfo(Integer uid) throws BusinessException;
+    UserVO getUserInfo() throws BusinessException;
 
     UserDO selectByPrimaryKey(Integer uid) throws BusinessException;
 
@@ -19,4 +19,10 @@ public interface UserService {
     String userLogin(String username,String password) throws BusinessException;
 
     String userAdd(String username,String password,String tel) throws  BusinessException;
+
+    String deleteAdmin(Integer uid) throws BusinessException;
+
+    String banAdmin(Integer status,Integer uid) throws BusinessException;
+
+    String updateUser (String username ,String tel ,Integer uid)throws BusinessException;
 }

@@ -27,4 +27,8 @@ public interface UserDOMapper {
     UserVO getUserInfo(Integer uid);
 
     List<UserVO> getUserList();
+
+    int banUser(@Param("status")Integer status ,@Param("uid")Integer uid);
+
+    int updateUser (@Param("username")String username ,@Param("tel")String tel ,@Param("uid")Integer uid);
 }

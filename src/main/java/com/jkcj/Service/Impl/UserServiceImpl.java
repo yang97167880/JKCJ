@@ -41,12 +41,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserVO getUserInfo(Integer uid) throws BusinessException{
+    public UserVO getUserInfo() throws BusinessException{
         try {
-            if (uid == null) {
-                uid = (Integer) MySessionUtil.getSession().getAttribute(MySessionUtil.USER_ACCOUNT);
-                if (uid == null) return null;
-            }
+            int uid = (Integer) MySessionUtil.getSession().getAttribute(MySessionUtil.USER_ACCOUNT);
+            if(uid == 0) return null;
             UserVO userVO = userDOMapper.getUserInfo(uid);
             return userVO;
         }catch (Exception e){
@@ -91,6 +89,40 @@ public class UserServiceImpl implements UserService {
             }
         } catch (Exception e){
             throw new BusinessException(EmBusinessErr.USER_LOGIN_ERROR);
+        }
+    }
+
+    @Override
+    public String deleteAdmin(Integer uid) throws BusinessException{
+        try{
+            int flag = userDOMapper.deleteByPrimaryKey(uid);
+            return flag==1? RTStr.SUCCESS:RTStr.ERROR;
+        }catch (Exception e){
+            throw new BusinessException(EmBusinessErr.USER_DELETE_ERROR);
+        }
+    }
+
+    @Override
+    public String banAdmin(Integer status,Integer uid) throws BusinessException{
+        try{
+            int flag = userDOMapper.banUser(status ,uid);
+            return flag==1? RTStr.SUCCESS:RTStr.ERROR;
+        }catch (Exception e){
+            throw new BusinessException(EmBusinessErr.UNKNOWN_ERROR);
+        }
+    }
+
+    @Override
+    public String updateUser (String username ,String tel ,Integer uid)throws BusinessException{
+        try {
+            UserDO userDO = userDOMapper.userLogin(username);
+            if(userDO == null){
+                int flag = userDOMapper.updateUser(username,tel,uid);
+                return flag==1? RTStr.SUCCESS:RTStr.ERROR;
+            }
+            return RTStr.ERROR;
+        }catch (Exception e){
+            throw new BusinessException(EmBusinessErr.UNKNOWN_ERROR);
         }
     }
 }

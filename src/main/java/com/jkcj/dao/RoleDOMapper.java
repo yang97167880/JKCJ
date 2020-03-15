@@ -1,6 +1,7 @@
 package com.jkcj.dao;
 
 import com.jkcj.DO.RoleDO;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,4 +19,8 @@ public interface RoleDOMapper {
     int updateByPrimaryKey(RoleDO record);
 
     List<RoleDO> getRoleList();
+
+    int banRole(@Param("status")Integer status , @Param("rid")Integer rid);
+
+    int updateRole(@Param("name")String name , @Param("detail")String detail,@Param("title")String title , @Param("rid")Integer rid);
 }

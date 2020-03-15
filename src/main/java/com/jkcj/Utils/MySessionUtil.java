@@ -19,7 +19,7 @@ public final class MySessionUtil {
     public static String USER_ACCOUNT = "account";
 
     static {
-        MySessionUtil.getSession().setAttribute(USER_ACCOUNT, "1");
+        MySessionUtil.getSession().setAttribute(USER_ACCOUNT, 0);
     }
 
     /**

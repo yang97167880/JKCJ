@@ -6,6 +6,7 @@ import com.jkcj.DO.RoleDO;
 import com.jkcj.DO.UserDO;
 import com.jkcj.Error.BusinessException;
 import com.jkcj.Error.EmBusinessErr;
+import com.jkcj.Response.RTStr;
 import com.jkcj.Service.RoleService;
 import com.jkcj.Utils.PageUtil;
 import com.jkcj.dao.RoleDOMapper;
@@ -34,6 +35,36 @@ public class RoleServiceImpl implements RoleService {
             return PageUtil.getListWithPageInfo(roleDOList,page);
         }catch (Exception e){
             throw new BusinessException(EmBusinessErr.ROLE_LIST_GET_ERROR);
+        }
+    }
+
+    @Override
+    public String deleteRole(Integer role_id) throws BusinessException{
+        try{
+            int flag = roleDOMapper.deleteByPrimaryKey(role_id);
+            return flag==1? RTStr.SUCCESS:RTStr.ERROR;
+        }catch (Exception e){
+            throw new BusinessException(EmBusinessErr.ROLE_DELETE_ERROR);
+        }
+    }
+
+    @Override
+    public  String banRole(Integer status , Integer rid) throws BusinessException{
+        try{
+            int flag = roleDOMapper.banRole(status ,rid);
+            return flag==1? RTStr.SUCCESS:RTStr.ERROR;
+        }catch (Exception e){
+            throw new BusinessException(EmBusinessErr.UNKNOWN_ERROR);
+        }
+    }
+
+    @Override
+    public String updateRole(String name ,String detail,String title , Integer rid) throws BusinessException{
+        try{
+            int flag = roleDOMapper.updateRole(name,detail,title,rid);
+            return flag==1? RTStr.SUCCESS:RTStr.ERROR;
+        }catch (Exception e){
+            throw new BusinessException(EmBusinessErr.UNKNOWN_ERROR);
         }
     }
 }
